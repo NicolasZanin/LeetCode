@@ -1,6 +1,6 @@
 from math import floor
 
-
+"""
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x < 0:
@@ -24,8 +24,18 @@ class Solution:
             j /= 10
 
         return True
+"""
 
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
+        last_x = x
+        y = 0
 
+        while x > 0:
+            y *= 10
+            y += x % 10
+            x //= 10
 
-s = Solution()
-print(s.isPalindrome(100))
+        return y == last_x
