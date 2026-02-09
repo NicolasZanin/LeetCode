@@ -22,17 +22,12 @@ class Solution:
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         longuest_common_prefix = ""
-        sizes = {}
-
-        # This part can be remove if string object have size field
-        for string in strs:
-            sizes[string] = len(string)
 
         for i in range(len(strs[0])):
             current_car = strs[0][i]
 
             for string in strs:
-                if i >= sizes[string] or current_car != string[i]:
+                if i >= len(string) or current_car != string[i]:
                     return longuest_common_prefix
 
             longuest_common_prefix += current_car
