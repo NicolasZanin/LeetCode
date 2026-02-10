@@ -52,6 +52,7 @@ class Solution:
         return result
 """
 
+""" 2nde solution with loop
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         result = ListNode()
@@ -74,3 +75,21 @@ class Solution:
             current_element_result.next = list2
 
         return result.next
+"""
+
+# Recursive solution
+class Solution:
+    def recursiveMerge(self, list1: ListNode, list2: ListNode) -> Optional[ListNode]:
+        if list1 and list2:
+            if list1.val <= list2.val:
+                return ListNode(list1.val, self.recursiveMerge(list1.next, list2))
+            else:
+                return ListNode(list2.val, self.recursiveMerge(list1, list2.next))
+
+        if list1:
+            return list1
+
+        return list2
+
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        return self.recursiveMerge(list1, list2)
