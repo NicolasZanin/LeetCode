@@ -51,3 +51,26 @@ class Solution:
 
         return result
 """
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        result = ListNode()
+        current_element_result = result
+
+        while list1 and list2:
+            if list1.val <= list2.val:
+                current_value = list1.val
+                list1 = list1.next
+            else:
+                current_value = list2.val
+                list2 = list2.next
+
+            current_element_result.next = ListNode(current_value)
+            current_element_result = current_element_result.next
+
+        if list1:
+            current_element_result.next = list1
+        elif list2:
+            current_element_result.next = list2
+
+        return result.next
