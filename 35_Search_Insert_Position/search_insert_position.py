@@ -1,6 +1,6 @@
 from typing import List
 
-
+""" Recursive Approach:
 class Solution:
     def dichotomies(self, i: int, j: int, nums: List[int], target: int) -> int:
         if i > j:
@@ -19,6 +19,25 @@ class Solution:
 
     def searchInsert(self, nums: List[int], target: int) -> int:
         return self.dichotomies(0, len(nums) - 1, nums, target)
+"""
+
+# Loop Approach
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        i = 0
+        j = len(nums) - 1
+
+        while i <= j:
+            middle = (i + j) // 2
+
+            if nums[middle] == target:
+                return middle
+            elif nums[middle] < target:
+                i = middle + 1
+            else:
+                j = middle - 1
+
+        return i
 
 s = Solution()
 print(s.searchInsert([1,2,3,4,5], 5))
